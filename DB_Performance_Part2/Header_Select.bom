@@ -1,0 +1,71 @@
+<?xml version='1.0'?>
+<model><title>Header_Select V1</title>
+<version>5</version>
+<guid>c0c5653d-07f5-4653-ac00-b1f48306e75f</guid>
+<nextid>19</nextid>
+<object name="Perf02" usage="optional" repeat="none" driver="DB" flags="2" id="1" t_o="-1">
+<description>Data Link</description>
+<default> - </default>
+<params>DataLink('Perf02', '', 'Source', 'no', '-1')</params>
+<used/>
+<object name="Header" usage="optional" repeat="zeroormore" driver="DB" flags="2" id="2" t_o="-1">
+<description>SELECT ... FROM Header</description>
+<params>Table('Header', 'Read', 'dbo', '')</params>
+<used/>
+<element type="integer" id="3" widths="0/-1" readonly="1" name="TableKey"><params>Column('yes', 'TableKey')</params>
+<used/>
+</element>
+<element type="string" id="4" widths="0/50" name="Name"><params>Column('no', 'Name')</params>
+<used/>
+</element>
+<element type="integer" id="5" widths="0/-1" name="Rand1"><params>Column('no', 'Rand1')</params>
+<used/>
+</element>
+<element type="currency" id="6" widths="0/-1" name="Rand2"><params>Column('no', 'Rand2')</params>
+<used/>
+</element>
+<element type="datetime" id="7" widths="0/-1" name="Date"><params>Column('no', 'Date')</params>
+<used/>
+</element>
+<object name="Lines" usage="optional" repeat="zeroormore" driver="DB" flags="0" id="8" t_o="-1">
+<description>Table</description>
+<default>WHERE ParentKey = $(source.Perf02.Header.TableKey)</default>
+<params>Table('Lines', 'Read', 'dbo', 'no')</params>
+<used/>
+<element type="integer" id="9" widths="0/-1" readonly="1" name="TableKey"><params>Column('yes', 'TableKey')</params>
+<used/>
+</element>
+<element type="integer" id="10" usage="mandatory" widths="0/-1" name="ParentKey"><params>Column('no', 'ParentKey')</params>
+<used/>
+</element>
+<element type="integer" id="11" widths="0/-1" name="Rand1"><params>Column('no', 'Rand1')</params>
+<used/>
+</element>
+<element type="currency" id="12" widths="0/-1" name="Rand2"><params>Column('no', 'Rand2')</params>
+<used/>
+</element>
+<element type="datetime" id="13" widths="0/-1" name="date"><params>Column('no', 'date')</params>
+<used/>
+</element>
+<object name="Products" usage="optional" repeat="zeroormore" driver="DB" flags="0" id="14" t_o="-1">
+<description>Table</description>
+<default>WHERE ParentKey = $(source.Perf02.Header.Lines.TableKey)</default>
+<params>Table('Products', 'Read', 'dbo', 'no')</params>
+<used/>
+<element type="integer" id="15" widths="0/-1" readonly="1" name="TableKey"><params>Column('yes', 'TableKey')</params>
+<used/>
+</element>
+<element type="integer" id="16" usage="mandatory" widths="0/-1" name="ParentKey"><params>Column('no', 'ParentKey')</params>
+<used/>
+</element>
+<element type="integer" id="17" widths="0/-1" name="Rand1"><params>Column('no', 'Rand1')</params>
+<used/>
+</element>
+<element type="currency" id="18" widths="0/-1" name="Rand2"><params>Column('no', 'Rand2')</params>
+<used/>
+</element>
+</object>
+</object>
+</object>
+</object>
+</model>
