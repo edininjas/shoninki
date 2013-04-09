@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<map flags="0" target="C:\DeliveryTeamRepository\_Shared\Alerts\Alert.bom" delivery="0" extflags="0" docroot="C:\DeliveryTeamRepository" guid="eb3bb60c-d495-43f9-b185-40b99d001c4d" source="C:\DeliveryTeamRepository\SAMPLE\DB Performance\Perf01\Header_Select V0.bom" script="C:\DeliveryTeamRepository\SAMPLE\DB Performance\Perf01\Header_Select to Alert V0" version="5">
+<title>Header_Select to Alert V0</title>
+<testdata></testdata>
+<layout source-column="672" target-column="672" repeat-column="50">50,40</layout>
+<installinfo></installinfo>
+<remark from="#1" to="#1" sequence="0" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>18 - table scan </expr>
+</remark><prologue from="#1" to="#1" sequence="0" ss="0" timing="0" command="new" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+</prologue><rule from="#1" to="#1" sequence="1" ss="0" timing="0" command="new" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>DataFile('CRLF', 1, ',', '&quot;', 'ASCII', '&lt;AUTO&gt;', '', 0, -1, 1)</expr>
+</rule><rule from="#2" to="#2" sequence="2" ss="0" timing="0" command="new" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Record(3, '', 0, 0)</expr>
+</rule><rule from="#2" to="#2" sequence="3" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Description=&quot;Header: &quot; &amp; Name</expr>
+</rule><rule from="#8" to="#2" sequence="4" ss="0" timing="0" command="new" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Record(3, '', 0, 0)</expr>
+</rule><rule from="#8" to="#2" sequence="5" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Description=&quot;Line: &quot; &amp; Rand1</expr>
+</rule><rule from="#14" to="#2" sequence="6" ss="0" timing="0" command="new" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Record(3, '', 0, 0)</expr>
+</rule><rule from="#14" to="#2" sequence="7" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Description=&quot;Product: &quot; &amp; Rand1</expr>
+</rule><epilogue from="#1" to="#1" sequence="8" ss="0" timing="0" command="new" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+</epilogue></map>

@@ -1,0 +1,69 @@
+<?xml version='1.0'?>
+<model><title>Header_Insert V1</title>
+<version>5</version>
+<guid>ee193345-0523-47fc-8d9b-a2f156987608</guid>
+<nextid>23</nextid>
+<object name="Perf01" usage="optional" repeat="none" driver="DB" flags="1" id="1" t_o="-1">
+<description>Data Link</description>
+<default> - </default>
+<params>DataLink('Perf01_ODBC', '', 'Target', 'no', '-1')</params>
+<used/>
+<object name="Header" usage="optional" repeat="zeroormore" driver="DB" flags="1" id="2" t_o="-1">
+<description>INSERT INTO Header</description>
+<params>Table('Header', 'AddOnly', 'dbo', '')</params>
+<used/>
+<element type="guid" id="3" widths="0/-1" name="TableKey"><params>Column('no', 'TableKey')</params>
+<used/>
+</element>
+<element type="string" id="4" widths="0/50" name="Name"><params>Column('no', 'Name')</params>
+<used/>
+</element>
+<element type="integer" id="5" widths="0/-1" name="Rand1"><params>Column('no', 'Rand1')</params>
+<used/>
+</element>
+<element type="currency" id="6" widths="0/-1" name="Rand2"><params>Column('no', 'Rand2')</params>
+<used/>
+</element>
+<element type="datetime" id="7" widths="0/-1" name="Date"><params>Column('no', 'Date')</params>
+<used/>
+</element>
+<object name="Lines" usage="optional" repeat="zeroormore" driver="DB" flags="0" id="8" t_o="-1">
+<description>Table</description>
+<params>Table('Lines', 'AddOnly', 'dbo', 'no')</params>
+<used/>
+<element type="guid" id="9" widths="0/-1" name="TableKey"><params>Column('no', 'TableKey')</params>
+<used/>
+</element>
+<element type="guid" id="10" widths="0/-1" name="ParentKey"><params>Column('no', 'ParentKey')</params>
+<used/>
+</element>
+<element type="integer" id="11" widths="0/-1" name="Rand1"><params>Column('no', 'Rand1')</params>
+<used/>
+</element>
+<element type="currency" id="12" widths="0/-1" name="Rand2"><params>Column('no', 'Rand2')</params>
+<used/>
+</element>
+<element type="datetime" id="13" widths="0/-1" name="date"><params>Column('no', 'date')</params>
+<used/>
+</element>
+<object name="Products" usage="optional" repeat="zeroormore" driver="DB" flags="0" id="14" t_o="-1">
+<description>Table</description>
+<params>Table('Products', 'AddOnly', 'dbo', 'no')</params>
+<used/>
+<element type="guid" id="19" widths="0/-1" name="TableKey"><params>Column('no', 'TableKey')</params>
+<used/>
+</element>
+<element type="guid" id="20" widths="0/-1" name="ParentKey"><params>Column('no', 'ParentKey')</params>
+<used/>
+</element>
+<element type="integer" id="21" widths="0/-1" name="Rand1"><params>Column('no', 'Rand1')</params>
+<used/>
+</element>
+<element type="currency" id="22" widths="0/-1" name="Rand2"><params>Column('no', 'Rand2')</params>
+<used/>
+</element>
+</object>
+</object>
+</object>
+</object>
+</model>

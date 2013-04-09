@@ -1,0 +1,78 @@
+<?xml version='1.0'?>
+<map flags="4194304" target="C:\DeliveryTeamRepository\SAMPLE\DB Performance\Perf01\Header_Insert V2.bom" delivery="0" extflags="0" docroot="C:\DeliveryTeamRepository" guid="0cefd329-bbb6-490e-b9c7-d818a5a0d906" source="C:\DeliveryTeamRepository\_Shared\Alerts\Report.bom" script="C:\DeliveryTeamRepository\SAMPLE\DB Performance\Perf01\Report to Header_Insert V2" version="5">
+<title>Report to Header_Insert V2</title>
+<testdata>C:\DeliveryTeamRepository\SAMPLE\DB Performance\Perf01\input100.txt</testdata>
+<layout source-column="732" target-column="712" repeat-column="100">47,45</layout>
+<installinfo></installinfo>
+<variable name="exec" value="0" init-at=""/>
+<variable name="vHeaderGuid" value="0" init-at=""/>
+<variable name="vDBLink" value="0" init-at=""/>
+<variable name="vLineGuid" value="0" init-at=""/>
+<variable name="iLine" value="0" init-at=""/>
+<variable name="iProduct" value="0" init-at=""/>
+<variable name="iHeader" value="0" init-at=""/>
+<remark from="#1" to="#1" sequence="0" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>21.6 Native Driver  simple DB structure</expr>
+</remark><prologue from="#1" to="#1" sequence="0" ss="0" timing="0" command="new" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+</prologue><prologue from="#1" to="#1" sequence="1" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>vDBLink=&quot;Perf01&quot;</expr>
+</prologue><prologue from="#1" to="#1" sequence="2" ss="0" timing="0" command="copy" source="source" targetoverride="1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>exec=DBExecute(vDBLink, &quot;  truncate table Header &quot;) </expr>
+</prologue><prologue from="#1" to="#1" sequence="3" ss="0" timing="0" command="copy" source="source" targetoverride="1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>exec=DBExecute(vDBLink, &quot;  truncate table Lines &quot;) </expr>
+</prologue><prologue from="#1" to="#1" sequence="4" ss="0" timing="0" command="copy" source="source" targetoverride="1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>exec=DBExecute(vDBLink, &quot;  truncate table Products &quot;) </expr>
+</prologue><rule from="#2" to="#1" sequence="5" ss="0" timing="0" command="new" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>DataLink('Perf01', '', 'Target', 'no')</expr>
+</rule><rule from="#2" to="#2" sequence="6" ss="0" timing="0" command="new" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  color="0xffff" >
+<expr>Table('Header', 'AddOnly', 'dbo', '')</expr>
+</rule><rule from="#2" to="#2" sequence="7" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  color="0xffffc0" >
+<expr>iLine=0</expr>
+</rule><rule from="#2" to="#2" sequence="8" ss="0" timing="0" command="copy" source="source" targetoverride="4" enabled="1" debug="0" bookmark="0" exp="1"  color="0xffffc0" >
+<expr>vHeaderGuid=&quot;{&quot; &amp; CreateGUID() &amp; &quot;}&quot;</expr>
+</rule><rule from="#2" to="#2" sequence="9" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>TableKey=vHeaderGuid</expr>
+</rule><rule from="#2" to="#2" sequence="10" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Name=Text</expr>
+</rule><rule from="#2" to="#2" sequence="11" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Rand1=RandBetween(1, 200) </expr>
+</rule><rule from="#2" to="#2" sequence="12" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Rand2=RandBetween(1000, 9999) </expr>
+</rule><rule from="#2" to="#2" sequence="13" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Date=Date()</expr>
+</rule><rule from="#2" to="#8" sequence="14" ss="0" timing="0" command="new" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  color="0xffff" >
+<expr>Table('Lines', 'AddOnly', 'dbo', 'no')</expr>
+<repeat conditioneval="repeat" max="99999">iLine &lt; 5</repeat>
+<condaction>Continue</condaction>
+</rule><rule from="#2" to="#8" sequence="15" ss="0" timing="0" command="copy" source="source" targetoverride="4" enabled="1" debug="0" bookmark="0" exp="1"  color="0xffffc0" >
+<expr>vLineGuid=&quot;{&quot; &amp; CreateGUID() &amp; &quot;}&quot;</expr>
+</rule><rule from="#2" to="#8" sequence="16" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  color="0xffffc0" >
+<expr>iProduct=0</expr>
+</rule><rule from="#2" to="#8" sequence="17" ss="0" timing="0" command="copy" source="source" targetoverride="2" enabled="1" debug="0" bookmark="0" exp="1"  color="0xffffc0" >
+<expr>iLine=iLine + 1</expr>
+</rule><rule from="#2" to="#8" sequence="18" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>TableKey=vLineGuid</expr>
+</rule><rule from="#2" to="#8" sequence="19" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>ParentKey=vHeaderGuid</expr>
+</rule><rule from="#2" to="#8" sequence="20" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Rand1=RandBetween(1, 200) </expr>
+</rule><rule from="#2" to="#8" sequence="21" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Rand2=RandBetween(1000, 9999) </expr>
+</rule><rule from="#2" to="#8" sequence="22" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Date=Date()</expr>
+</rule><rule from="#2" to="#14" sequence="23" ss="0" timing="0" command="new" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  color="0xffff" >
+<expr>Table('Products', 'AddOnly', 'dbo', 'no')</expr>
+<repeat conditioneval="repeat" max="99999">iProduct &lt; 3</repeat>
+<condaction>Continue</condaction>
+</rule><rule from="#2" to="#14" sequence="24" ss="0" timing="0" command="copy" source="source" targetoverride="14" enabled="1" debug="0" bookmark="0" exp="1"  color="0xffffc0" >
+<expr>iProduct=iProduct + 1</expr>
+</rule><rule from="#2" to="#14" sequence="25" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>TableKey=&quot;{&quot; &amp; CreateGUID() &amp; &quot;}&quot;</expr>
+</rule><rule from="#2" to="#14" sequence="26" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>ParentKey=vLineGuid</expr>
+</rule><rule from="#2" to="#14" sequence="27" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Rand1=RandBetween(1, 200) </expr>
+</rule><rule from="#2" to="#14" sequence="28" ss="0" timing="0" command="copy" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+<expr>Rand2=RandBetween(1000, 9999) </expr>
+</rule><epilogue from="#1" to="#1" sequence="29" ss="0" timing="0" command="new" source="source" targetoverride="-1" enabled="1" debug="0" bookmark="0" exp="1"  >
+</epilogue></map>
